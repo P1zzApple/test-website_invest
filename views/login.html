@@ -13,11 +13,12 @@
 				Login <br />to<br />
 				Malcoin
 			</h1>
-			<form action="/login" method="post">
-				<input type="email" name="email" placeholder="email" />
-				<input type="password" name="password" placeholder="password" />
-				<input class="button" type="submit" value="Login" />
-			</form>
+		<form action="/login" method="post">
+		    {% csrf_token %}
+		    <input type="email" name="email" placeholder="email" />
+		    <input type="password" name="password" placeholder="password" />
+		    <input class="button" type="submit" value="Login" />
+		</form>
 		</div>
 	</body>
 </html>
