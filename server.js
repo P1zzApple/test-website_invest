@@ -37,11 +37,11 @@ function authenticate(req, res, next) {
 const { Client } = require("pg");
 
 const db = new Client({
-	user: "postgres",
-	password: "gunjan",
-	host: "localhost",
-	port: 5432,
-	database: "postgres",
+	user: USER,
+	password: PASSWORD,
+	host: HOST,
+	port: PORT,
+	database: DB,
 });
 
 db.connect();
