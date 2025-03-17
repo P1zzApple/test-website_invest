@@ -141,28 +141,6 @@ app.post("/sendCoins", authenticate, async (req, res) => {
 
 // ---------------- Profile ------------------
 
-app.get("/profile/:id", async (req, res) => {
-	const id = req.params.id;
-	try {
-		// Wrong way
-		const data = await db.query(
-			`select id, name, email, coin from profile where id = ${id}`
-		);
-
-		// Right Way
-		// const data = await db.query(
-		// 	`select id, name, email, coin from profile where id = $1`,
-		// 	[id]
-		// );
-		res.render("profile.ejs", {
-			authUser: req.session.authUser,
-			profile: data.rows[0],
-		});
-	} catch (e) {
-		res.json({ error: e });
-	}
-});
-
 // ------------ New Post -------------
 
 app.post("/post", authenticate, async (req, res) => {
