@@ -15,11 +15,17 @@ app.use(express.json());
 app.use(express.static("views"));
 app.use(cookieParser())
 app.use(
-	session({
-		secret: "Session Secret",
-		resave: false,
-		saveUninitialized: false,
-	})
+    session({
+        name: "my_secure_session", // Уникальное имя куки
+        secret: "SuperSecretKey123!", // Секрет для шифрования сессии
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: true, // Только по HTTPS
+            httpOnly: true, // Защита от XSS
+            sameSite: "strict" // Защита от CSRF
+        }
+    })
 );
 const csrfProtection = csrf({ cookie: true });
 
